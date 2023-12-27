@@ -1,25 +1,27 @@
 venv_name="venv"
 activate=true
 
-deactivate(){
-    deactivate
-    if [ $? -eq 0 ]
-    then
-        echo "goodbye!"
-        exit
-    else
-        echo "Error: You probably weren't in a venv"
-        exit
-    fi
+show_help(){
+    echo "
+Emi's awsome pyhton venv creator!!!:
+  -h | Show help
+  -a | Dont activate the venv after being created
+  -n | Sets venv name"
+    exit
 }
 
-while getopts "n:ad" arg; do
+while getopts "n:ah" arg; do
   case $arg in
+    h) show_help;;
     n) venv_name=$OPTARG;;
     a) activate=false;;
   esac
 done
 
+if [ "$#" -eq 0 ];
+then
+    show_help
+fi
 
 echo "creating venv at ${PWD}"
 
