@@ -11,5 +11,5 @@ if argc > 1:
 else:
     for line in sys.stdin:
         sys.stdout.write(line.replace(" ", "_"))
-        sys.stdout.write("\n")
+        ##sys.stdout.write("\n")
 
